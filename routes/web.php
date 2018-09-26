@@ -24,7 +24,9 @@ Route::get('/home/subject/create','SubjectsController@create')->name('subject.cr
 Route::post('/home','SubjectsController@store')->name('subject.store');
 //Delete Subject
 Route::get('/home/subject/{id}/delete','SubjectsController@delete')->name('subject.delete');
-//Edit Subject
-Route::get('home/subject/{id}', 'SubjectsController@edit')->name('subject.edit');
+//show notes for Subject
+Route::get('home/subject/{id}', 'SubjectsController@showNotes')->name('subject.show');
+//create and edit notes
+Route::get('home/notes/{id}', 'SubjectsController@edit')->name('subject.edit');
 //Update Subject
-Route::post('home/subject/{id}', 'SubjectsController@update')->name('subject.update');
+Route::post('home/subject/{id}', 'SubjectsController@createNote')->name('subject.createNote');

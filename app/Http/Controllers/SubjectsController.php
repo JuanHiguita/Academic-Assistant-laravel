@@ -23,7 +23,6 @@ class SubjectsController extends Controller
     {
         //Save Subjects
         Subject::create($request->all());
-        Notes::create($request->all());
         return redirect()->route('subject.home');
     }
     //Display the specific resource
@@ -38,12 +37,41 @@ class SubjectsController extends Controller
         $subject=Subject::find($id);
         return view('app_html.editSubject',['subject'=>$subject]);
     }
-    public function update(Request $request, $id)
+    //show notes for subject
+    public function showNotes($id){
+        $notes=Notes::where('subject_id',$id)->get();
+        $subject=Subject::find($id);
+        return view('app_html.showNotes',['notes'=>$notes],['subject'=>$subject]);
+    }
+    public function createNote(Request $request,$id)
     {
         //
-        Subject::find($id)->update($request->all());
-        Notes::find($id)->update($request->all());
-        return redirect()->route('subject.home');
+        $name = $request->get('name_note');
+        $qualification = $request->get('qualification');
+        $percentage = $request->get('percentage');
+        $subject_id = $request->get('subject_id');
+
+        $nota = new Notes();
+
+        $nota->name_note=$name;
+        $nota->qualification=$qualification;
+        $nota->percentage=$percentage;
+        $nota->subject_id=$subject_id;
+
+        $nota->save();
+        
+        //Notes::create($request->all());
+        $subject=Subject::find($id);
+        $notes=Notes::where('subject_id',$subject->id)->get();
+        $suma=0;
+        $count=0;
+        foreach($notes as $notes){
+            $count+=1;
+            $suma=$suma+$notes->qualification;
+        }
+        $average=$suma/$count;
+        $subject->update(['average'=>$average]);
+        return redirect()->route('subject.show',['subject'=>$subject]);
     }
 
     //Delete Specific Subject

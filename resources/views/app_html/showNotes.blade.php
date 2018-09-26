@@ -1,16 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Academic Assistant</title>
+	<title>Academic Assistant</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link href="{{ asset('css/style_user.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/style_user.css')}}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-			<a class= "navbar-brand js-scroll-trigger" id="menu" href="/home" >Academic Assistant</a>
+			<a class= "navbar-brand js-scroll-trigger" id="menu" >Academic Assistant</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="material-icons">menu</i>
 			</button>
@@ -32,22 +32,49 @@
 			</div>
 		</div>
 	</nav>
-    <div class="container" id="form">
-        <div class="card">
-                <h3>Create a new Subject</h3>
-                <div class="card-body">
-                <form method="POST" action="{{route('subject.store')}}" role="form">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <input  type="text" name="name" class="form-control" id="name" placeholder="Name of Subject">
-                    </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </form>
-            </div>
-        </div>
-    </div>
-    </div>-
-    <!--cargar Jquery, Popper.js, y el js para bootstrap -->
+
+	<div class="container" id="form">
+		<div class="card">
+			<div class="card-body">
+                <h3>{{$subject->name}}</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Calificacion</th>
+							<th scope="col">Porcentaje</th>
+							<th scope="col"></th>
+                            <th scope="col"></th>
+						</tr>
+					</thead>		
+					@if (count($notes)>0)
+						@foreach($notes as $notes)
+						<tbody>
+							<tr>
+								<th scope="row">{{$notes->id}}</th>
+								<td>{{$notes->name_note}}</td>
+								<td>{{$notes->qualification}}</td>
+                                <td>{{$notes->percentage}} %</td>
+								<td><a href="{{route('subject.delete',$subject->id)}}">Delete</a></td>
+							</tr>
+						</tbody>	
+						@endforeach
+					@else
+						<tr>
+							<td colspan="3">No hay datos</td>
+						</tr>
+					@endif
+					</table> 
+			</div>
+			<div class="card-footer">
+				<div class="row">
+                <input type="button" id="btnAdd" value="Add Note" onclick="window.location='{{route('subject.edit',$subject->id)}}'">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--cargar Jquery, Popper.js, y el js para bootstrap -->
 	<script
 	src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -59,5 +86,8 @@
 	<canvas class="background"></canvas>
 	<script src="{{asset('dist/particles.min.js')}}"></script>
 	<script src="{{asset('js/particles.js')}}"></script>
+	<!--Carga de los js para el funcionamiento del sitio
+	<script src="js/login_signup.js"></script>
+	<script src="js/promedio.js"></script>-->
 </body>
 </html>

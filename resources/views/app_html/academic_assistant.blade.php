@@ -52,8 +52,8 @@
 							<tr>
 								<th scope="row">{{$subject->id}}</th>
 								<td>{{$subject->name}}</td>
-								<td></td>
-								<td><a href="{{route('subject.edit',$subject->id)}}">Edit</a></td>
+								<td>{{$subject->average}}</td>
+								<td><a href="{{route('subject.show',$subject->id)}}">Show Notes</a></td>
 								<td><a href="{{route('subject.delete',$subject->id)}}">Delete</a></td>
 							</tr>
 						</tbody>	

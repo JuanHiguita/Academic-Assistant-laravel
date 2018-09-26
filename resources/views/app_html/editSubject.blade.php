@@ -5,12 +5,12 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/style_user.css">
+	<link href="{{ asset('css/style_user.css') }}" rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-			<a class= "navbar-brand js-scroll-trigger" id="menu" >Academic Assistant</a>
+			<a class= "navbar-brand js-scroll-trigger" id="menu" href="/home">Academic Assistant</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="material-icons">menu</i>
 			</button>
@@ -34,15 +34,17 @@
     </nav>
     <div class="container" id="form">
         <div class="card">
-            <h3>Edit Subject</h3>
+            <h3>Add Note</h3>
             <div class="card-body">
-            <form method="POST" action="{{route('subject.update',$subject->id)}}" role="form">
+            <form method="POST" action="{{route('subject.createNote',$subject->id)}}" role="form">
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input  type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{$subject->name}}">
+                    <input type="hidden" name="subject_id" value="{{$subject->id}}">
+					<h3 name="name" id="name">{{$subject->name}}</h3>
+					
                 </div>
+
                 <div class="form-group">
                     <label for="name_note">Name Note</label>
                     <input type="tetx" name="name_note" class="form-control" id="name_note" placeholder="Name of Note">
@@ -52,8 +54,7 @@
                     <input type="number" name="percentage" class="form-control" id="percentage" placeholder="percentage">
                     
                 </div>
-                <input type="button" class="btn btn-primary" id="btnAddNote" value="Add Note">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary" onclick="window.location='{{route('subject.createNote',$subject->id)}}'">Create</button>
             </form>
         </div>
     </div>

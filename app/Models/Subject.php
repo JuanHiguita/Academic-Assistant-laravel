@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     //
-    protected $fillable = ['name'];
+    protected $fillable = ['name','average'];
 
     public function Notes(){
         return $this->belongToMany(Notes::class);
