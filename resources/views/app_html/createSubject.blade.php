@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-			<a class= "navbar-brand js-scroll-trigger" id="menu" href="/home" >Academic Assistant</a>
+			<a class= "navbar-brand js-scroll-trigger" id="menu" href="" >Academic Assistant</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="material-icons">menu</i>
 			</button>
@@ -20,7 +20,7 @@
 						<a id="cal_li" class="nav-link js-scroll-trigger" href="/calendar">Academic Calendar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" id="prom_li" href="/average">Average Notes</a>
+						<a class="nav-link js-scroll-trigger" id="prom_li" href="/home">Average Notes</a>
 					</li>
 					<li class="nav-item">
 						<a id="graf_li" class="nav-link js-scroll-trigger" href="/graphics">Graphics</a>
@@ -33,15 +33,15 @@
 		</div>
 	</nav>
     <div class="container" id="form">
-        <div class="card">
-                <h3>Create a new Subject</h3>
+		<h1 class="tittleForm">Create a New Subject</h1>
+        <div class="card">   
                 <div class="card-body">
                 <form method="POST" action="{{route('subject.store')}}" role="form">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <input  type="text" name="name" class="form-control" id="name" placeholder="Name of Subject">
                     </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary btnSave">Save</button>
             </form>
             </div>
         </div>

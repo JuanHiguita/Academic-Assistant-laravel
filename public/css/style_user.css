@@ -137,7 +137,7 @@ input {
 	cursor: text;
 }
 
-input[type="button"]{
+input[type="button"],.btnSave{
 	padding: 0.3em;
 	cursor: pointer;
 	border-radius: 6px;
@@ -145,7 +145,7 @@ input[type="button"]{
 	color: white;
 	margin: 0.3em;
 }
-input[type="button"]:hover {
+input[type="button"]:hover, .btnSave:hover{
 	background-color: #302E2E;
 }
 #form {
@@ -159,6 +159,24 @@ ul{
 	list-style-type: none;
 }
 
+.icon-button{
+	background-color: transparent;
+	color: #1F1E1E;
+	cursor: pointer;
+	border:none;
+}
+
+.icon-button:hover{
+	color:#302E2E;
+}
+
+.tittleForm {
+	text-align: center;
+	color: #fff;
+	display: block;
+	margin-top: 3.5em;
+	margin-bottom: 1.75em;
+}
 /*No Borrar*/
 html, body {
 	height: 100vh;

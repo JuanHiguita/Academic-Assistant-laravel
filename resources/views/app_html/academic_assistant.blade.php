@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style_user.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -20,7 +21,7 @@
 						<a id="cal_li" class="nav-link js-scroll-trigger" href="/calendar">Academic Calendar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" id="prom_li" href="/average">Average Notes</a>
+						<a class="nav-link js-scroll-trigger" id="prom_li" href="/home">Average Notes</a>
 					</li>
 					<li class="nav-item">
 						<a id="graf_li" class="nav-link js-scroll-trigger" href="/graphics">Graphics</a>
@@ -39,8 +40,7 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">ID</th>
-							<th scope="col">Nombre</th>
+							<th scope="col">Subject</th>
 							<th scope="col">Average</th>
 							<th scope="col"></th>
 							<th scope="col"></th>
@@ -50,11 +50,10 @@
 						@foreach($subject as $subject)
 						<tbody>
 							<tr>
-								<th scope="row">{{$subject->id}}</th>
 								<td>{{$subject->name}}</td>
 								<td>{{$subject->average}}</td>
-								<td><a href="{{route('subject.show',$subject->id)}}">Show Notes</a></td>
-								<td><a href="{{route('subject.delete',$subject->id)}}">Delete</a></td>
+								<td><a class="icon-button" href="{{route('subject.show',$subject->id)}}"><i class="fas fa-clipboard fa-lg" ></i></a></td>
+								<td><a class="icon-button" href="{{route('subject.delete',$subject->id)}}"><i class="fas fa-trash-alt fa-lg"></i></a></td>
 							</tr>
 						</tbody>	
 						@endforeach

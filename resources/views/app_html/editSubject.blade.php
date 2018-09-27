@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-			<a class= "navbar-brand js-scroll-trigger" id="menu" href="/home">Academic Assistant</a>
+			<a class= "navbar-brand js-scroll-trigger" id="menu" href="">Academic Assistant</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="material-icons">menu</i>
 			</button>
@@ -20,7 +20,7 @@
 						<a id="cal_li" class="nav-link js-scroll-trigger" href="/calendar">Academic Calendar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" id="prom_li" href="/average">Average Notes</a>
+						<a class="nav-link js-scroll-trigger" id="prom_li" href="/home">Average Notes</a>
 					</li>
 					<li class="nav-item">
 						<a id="graf_li" class="nav-link js-scroll-trigger" href="/graphics">Graphics</a>
@@ -31,10 +31,11 @@
 				</ul>
 			</div>
 		</div>
-    </nav>
+	</nav>
+	
     <div class="container" id="form">
+		<h1 class="tittleForm">Add Note</h1>
         <div class="card">
-            <h3>Add Note</h3>
             <div class="card-body">
             <form method="POST" action="{{route('subject.createNote',$subject->id)}}" role="form">
                 {{ csrf_field() }}
@@ -44,17 +45,16 @@
 					<h3 name="name" id="name">{{$subject->name}}</h3>
 					
                 </div>
-
                 <div class="form-group">
                     <label for="name_note">Name Note</label>
                     <input type="tetx" name="name_note" class="form-control" id="name_note" placeholder="Name of Note">
-                    <label for="qualification">Qualification</label>
-                    <input type="number" name="qualification" class="form-control" id="qualification" placeholder="Quialification">
+                    <label for="qualification">Note</label>
+                    <input type="number" step="0.01" name="qualification" class="form-control" id="qualification" placeholder="Note">
                     <label for="percentage">Percentage</label>
-                    <input type="number" name="percentage" class="form-control" id="percentage" placeholder="percentage">
+                    <input type="number" step="0.01" name="percentage" class="form-control" id="percentage" placeholder="percentage">
                     
-                </div>
-                <button type="submit" class="btn btn-primary" onclick="window.location='{{route('subject.createNote',$subject->id)}}'">Create</button>
+				</div>
+                <button type="submit" class="btn btn-primary btnSave" onclick="window.location='{{route('subject.createNote',$subject->id)}}'">Add</button>
             </form>
         </div>
     </div>

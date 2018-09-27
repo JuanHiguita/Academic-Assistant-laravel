@@ -45,31 +45,39 @@ class SubjectsController extends Controller
     }
     public function createNote(Request $request,$id)
     {
-        //
+        //Request for notes parameters 
         $name = $request->get('name_note');
         $qualification = $request->get('qualification');
         $percentage = $request->get('percentage');
         $subject_id = $request->get('subject_id');
-
+        //create a note
         $nota = new Notes();
-
         $nota->name_note=$name;
         $nota->qualification=$qualification;
         $nota->percentage=$percentage;
         $nota->subject_id=$subject_id;
-
+        //save note
         $nota->save();
         
-        //Notes::create($request->all());
         $subject=Subject::find($id);
         $notes=Notes::where('subject_id',$subject->id)->get();
+        //average subject
         $suma=0;
-        $count=0;
+        $max_percentage=0;
         foreach($notes as $notes){
-            $count+=1;
-            $suma=$suma+$notes->qualification;
-        }
-        $average=$suma/$count;
+            //$suma=$suma+$notes->qualification;
+            if($notes->percentage<=100){
+                if ($notes->percentage>=0){
+                    if($max_percentage>=0){ 
+                        if($max_percentage<=100){
+                            $max_percentage=$max_percentage+$notes->percentage;
+                            $suma=$suma+($notes->qualification*$notes->percentage);
+                            }
+                        }
+                    }
+                } 
+            } 
+        $average=$suma/100;
         $subject->update(['average'=>$average]);
         return redirect()->route('subject.show',['subject'=>$subject]);
     }
@@ -78,6 +86,15 @@ class SubjectsController extends Controller
     public function delete($id){
         Subject::destroy($id);
         return redirect()->route('subject.home');
+    }
+    public function deleteNote($id){
+        //$subject=Notes::all();
+        $subject_id = Notes::find($id)->subject_id;
+        //dd($subject_id);
+        Notes::destroy($id);
+        
+        //$subject->update(['average'=>$average]);
+        return redirect()->route('subject.show',['subject_id'=>$subject_id]);
     }
     public function destroy($id)
     {
