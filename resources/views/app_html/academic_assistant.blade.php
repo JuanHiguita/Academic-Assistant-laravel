@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/style_user.css">
+	<link href="{{ asset('css/style_user.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
@@ -18,16 +18,21 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a id="cal_li" class="nav-link js-scroll-trigger" href="/calendar">Academic Calendar</a>
+						<a id="cal_li" class="nav-link js-scroll-trigger" href="">Academic Calendar</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link js-scroll-trigger" id="prom_li" href="/home">Average Notes</a>
 					</li>
 					<li class="nav-item">
-						<a id="graf_li" class="nav-link js-scroll-trigger" href="/graphics">Graphics</a>
+						<a id="graf_li" class="nav-link js-scroll-trigger" href="">Graphics</a>
 					</li>
 					<li class="nav-item">
-						<a id="SignOut" class="nav-link js-scroll-trigger">Sign Out</a>
+						<a id="SignOut" class="nav-link js-scroll-trigger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							Logout
+						</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}			
+						</form>
 					</li>
 				</ul>
 			</div>
@@ -81,8 +86,8 @@
 	<!--Carga Particles.js-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 	<canvas class="background"></canvas>
-	<script src="dist/particles.min.js"></script>
-	<script src="js/particles.js"></script>
+	<script src="{{asset('dist/particles.min.js')}}"></script>
+	<script src="{{asset('js/particles.js')}}"></script>
 	<!--Carga de los js para el funcionamiento del sitio
 	<script src="js/login_signup.js"></script>
 	<script src="js/promedio.js"></script>-->

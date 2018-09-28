@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\Notes;
-
+use App\User;
 class SubjectsController extends Controller
 {
     //
     public function listar(){
-        $subjects=Subject::all();
+        $user=auth()->user()->id;
+        $subjects=Subject::where('user_id',$user)->get();
+        
         return view('app_html.academic_assistant',['subject'=>$subjects]);
 
     }
@@ -22,7 +24,14 @@ class SubjectsController extends Controller
     public function store(Request $request)
     {
         //Save Subjects
-        Subject::create($request->all());
+        
+        $name = $request->get('name');
+        $user_id = auth()->user()->id;
+
+        $subject = new Subject();
+        $subject->name=$name;
+        $subject->user_id=$user_id;
+        $subject->save();
         return redirect()->route('subject.home');
     }
     //Display the specific resource
@@ -90,7 +99,6 @@ class SubjectsController extends Controller
     public function deleteNote($id){
         //$subject=Notes::all();
         $subject_id = Notes::find($id)->subject_id;
-        //dd($subject_id);
         Notes::destroy($id);
         
         //$subject->update(['average'=>$average]);

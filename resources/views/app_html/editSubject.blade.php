@@ -17,16 +17,21 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a id="cal_li" class="nav-link js-scroll-trigger" href="/calendar">Academic Calendar</a>
+						<a id="cal_li" class="nav-link js-scroll-trigger" href="">Academic Calendar</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link js-scroll-trigger" id="prom_li" href="/home">Average Notes</a>
 					</li>
 					<li class="nav-item">
-						<a id="graf_li" class="nav-link js-scroll-trigger" href="/graphics">Graphics</a>
+						<a id="graf_li" class="nav-link js-scroll-trigger" href="">Graphics</a>
 					</li>
 					<li class="nav-item">
-						<a id="SignOut" class="nav-link js-scroll-trigger">Sign Out</a>
+						<a id="SignOut" class="nav-link js-scroll-trigger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							Logout
+						</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}			
+						</form>
 					</li>
 				</ul>
 			</div>
