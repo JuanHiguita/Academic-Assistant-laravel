@@ -97,7 +97,7 @@
 
 				<p style="text-align: center">
 					Already have an account?
-					<a href="{{route('login')}}}">Log In</a>
+					<a href="{{route('login')}}">Log In</a>
 				</p>
 			</div>
 		</form>

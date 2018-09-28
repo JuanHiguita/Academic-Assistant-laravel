@@ -78,13 +78,11 @@
 					<li class="liLogin">
 						<input type="submit" value="Log In" id="login-button" class="mainbtn submit-signup" tabindex="8">
                     </li>
-                    <li class="liLogin">
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            Forgot Your Password?
-                        </a>
-                    </li>
-				</ul>
-
+                </ul>
+                <p style="text-align:center">
+                    <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                </p>
+                
 				<p style="text-align: center">
 					Don't have an account?
 					<a href="{{ route('register') }}" tabindex="9">Sign Up</a>
