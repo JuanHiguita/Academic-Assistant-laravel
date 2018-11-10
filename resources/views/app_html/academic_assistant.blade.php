@@ -24,7 +24,7 @@
 						<a class="nav-link js-scroll-trigger" id="prom_li" href="/home">Average Notes</a>
 					</li>
 					<li class="nav-item">
-						<a id="graf_li" class="nav-link js-scroll-trigger" href="">Graphics</a>
+						<a id="graf_li" class="nav-link js-scroll-trigger" href="{{route('subject.chart')}}">Graphics</a>
 					</li>
 					<li class="nav-item">
 						<a id="SignOut" class="nav-link js-scroll-trigger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -64,7 +64,7 @@
 						@endforeach
 					@else
 						<tr>
-							<td colspan="3">No hay datos</td>
+							<td colspan="3">You Don't Have Subjects</td>
 						</tr>
 					@endif
 					</table> 
@@ -88,8 +88,5 @@
 	<canvas class="background"></canvas>
 	<script src="{{asset('dist/particles.min.js')}}"></script>
 	<script src="{{asset('js/particles.js')}}"></script>
-	<!--Carga de los js para el funcionamiento del sitio
-	<script src="js/login_signup.js"></script>
-	<script src="js/promedio.js"></script>-->
 </body>
 </html>

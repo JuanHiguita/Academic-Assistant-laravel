@@ -27,7 +27,7 @@
 						<a id="graf_li" class="nav-link js-scroll-trigger" href="graphics.html">Graphics</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" id="nav-login" href="login.html">Log In</a>
+						<a class="nav-link js-scroll-trigger" id="nav-login" href="{{ route('login') }}">Log In</a>
 					</li>
 				</ul>
 			</div>

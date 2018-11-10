@@ -28,7 +28,10 @@ Route::get('/home/subject/{id}/delete','SubjectsController@delete')->name('subje
 Route::get('home/subject/note/{id}/delete','SubjectsController@deleteNote')->name('note.delete');
 //show notes for Subject
 Route::get('home/subject/{id}', 'SubjectsController@showNotes')->name('subject.show');
+//show charts
+Route::get('home/user/charts', 'SubjectsController@showCharts')->name('subject.chart');
 //create and edit notes
 Route::get('home/notes/{id}', 'SubjectsController@edit')->name('subject.edit');
 //Update Subject
 Route::post('home/subject/{id}', 'SubjectsController@createNote')->name('subject.createNote');
+

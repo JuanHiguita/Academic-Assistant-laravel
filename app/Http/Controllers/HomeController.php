@@ -21,6 +21,6 @@ class HomeController extends Controller
     }
     public function graphics()
     {
-        return view('app_html.graphics');
+        return view('test');
     }
 }
